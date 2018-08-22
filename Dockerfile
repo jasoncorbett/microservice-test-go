@@ -4,7 +4,7 @@ COPY main.go /microservice/main.go
 
 WORKDIR /microservice
 
-RUN go build -o microservice
+RUN CGO_ENABLED=0 go build -a -ldflags '-extldflags "-static"' -o microservice
 
 FROM scratch
 
